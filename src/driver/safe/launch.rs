@@ -279,7 +279,7 @@ unsafe impl<$($Vars: DeviceRepr),*> LaunchAsync<($($Vars, )*)> for CudaFunction 
 impl_launch!([A], [0]);
 impl_launch!([A, B], [0, 1]);
 impl_launch!([A, B, C], [0, 1, 2]);
-impl_launch!([A, B, C, D], [0, 1, 2, 3]);
+
 impl_launch!([A, B, C, D, E], [0, 1, 2, 3, 4]);
 impl_launch!([A, B, C, D, E, F], [0, 1, 2, 3, 4, 5]);
 impl_launch!([A, B, C, D, E, F, G], [0, 1, 2, 3, 4, 5, 6]);

@@ -279,7 +279,7 @@ unsafe impl<$($Vars: DeviceRepr),*> LaunchAsync<($($Vars, )*)> for CudaFunction 
 impl_launch!([A], [0]);
 impl_launch!([A, B], [0, 1]);
 impl_launch!([A, B, C], [0, 1, 2]);
-
+impl_launch!([A, B, C, D], [0, 1, 2, 3]);
 impl_launch!([A, B, C, D, E], [0, 1, 2, 3, 4]);
 impl_launch!([A, B, C, D, E, F], [0, 1, 2, 3, 4, 5]);
 impl_launch!([A, B, C, D, E, F, G], [0, 1, 2, 3, 4, 5, 6]);
@@ -296,38 +296,6 @@ impl_launch!(
 impl_launch!(
     [A, B, C, D, E, F, G, H, I, J, K, L],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-);
-impl_launch!(
-    [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 );
 
 #[cfg(test)]

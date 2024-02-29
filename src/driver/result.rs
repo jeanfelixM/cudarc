@@ -744,6 +744,7 @@ pub mod module {
     /// # Safety
     /// `module` must not have be unloaded already.
     pub unsafe fn unload(module: sys::CUmodule) -> Result<(), DriverError> {
+        println!("Unloading module");
         sys::cuModuleUnload(module).result()
     }
 }

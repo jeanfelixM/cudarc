@@ -164,21 +164,23 @@ impl Drop for CudaDevice {
 
         let event = std::mem::replace(&mut self.event, std::ptr::null_mut());
         if !event.is_null() {
-            match unsafe { result::event::destroy(event) }.unwrap(){
+            match unsafe { result::event::destroy(event) }{
                 Ok(_) => {}
                 Err(e) => {
                     println!("Error destroying event: {:?}", e);
                 }
         }
+    }
 
         let ctx = std::mem::replace(&mut self.cu_primary_ctx, std::ptr::null_mut());
         if !ctx.is_null() {
-            match unsafe { result::primary_ctx::release(self.cu_device) }.unwrap(){
+            match unsafe { result::primary_ctx::release(self.cu_device) }{
                 Ok(_) => {}
                 Err(e) => {
                     println!("Error releasing primary context: {:?}", e);
                 }
         }
+    }
     }
 }
 

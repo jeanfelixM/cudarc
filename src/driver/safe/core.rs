@@ -147,6 +147,7 @@ impl Drop for CudaDevice {
         let modules = modules.unwrap();
 
         for (_, module) in modules.iter() {
+            println!("Unloading module");
             unsafe { result::module::unload(module.cu_module) }.unwrap();
         }
         modules.clear();

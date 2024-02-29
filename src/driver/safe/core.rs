@@ -147,13 +147,8 @@ impl Drop for CudaDevice {
         let modules = modules.unwrap();
 
         for (_, module) in modules.iter() {
-            println!("Unloading module");
-            match unsafe { result::module::unload(module.cu_module) } {
-                Ok(_) => {}
-                Err(e) => {
-                    println!("Error unloading module: {:?}", e);
-                }
-            }
+            println!("Unloading module {:?}", module);
+            unsafe { result::module::unload(module.cu_module) }.unwrap();
         }
         modules.clear();
 
@@ -164,23 +159,13 @@ impl Drop for CudaDevice {
 
         let event = std::mem::replace(&mut self.event, std::ptr::null_mut());
         if !event.is_null() {
-            match unsafe { result::event::destroy(event) }{
-                Ok(_) => {}
-                Err(e) => {
-                    println!("Error destroying event: {:?}", e);
-                }
+            unsafe { result::event::destroy(event) }.unwrap();
         }
-    }
 
         let ctx = std::mem::replace(&mut self.cu_primary_ctx, std::ptr::null_mut());
         if !ctx.is_null() {
-            match unsafe { result::primary_ctx::release(self.cu_device) }{
-                Ok(_) => {}
-                Err(e) => {
-                    println!("Error releasing primary context: {:?}", e);
-                }
+            unsafe { result::primary_ctx::release(self.cu_device) }.unwrap();
         }
-    }
     }
 }
 

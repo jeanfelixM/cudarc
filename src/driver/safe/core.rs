@@ -140,6 +140,8 @@ impl Drop for CudaDevice {
     fn drop(&mut self) {
         self.bind_to_thread().unwrap();
 
+        println!("Dropping device {}", self.ordinal);
+
         let modules = RwLock::get_mut(&mut self.modules);
         #[cfg(not(feature = "no-std"))]
         let modules = modules.unwrap();
